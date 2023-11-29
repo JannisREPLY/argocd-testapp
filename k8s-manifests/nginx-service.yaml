@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: echo-server-service
+  name: argocd-example-app-service
 spec:
-  selector:
-    app: echo-server
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
   type: NodePort
+  selector:
+    app: argocd-example-app
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 31000 # Optional: Kubernetes will choose a port if this is omitted

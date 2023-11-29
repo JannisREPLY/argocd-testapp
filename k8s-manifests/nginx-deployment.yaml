@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: echo-server-deployment
-  labels:
-    app: echo-server
+  name: argocd-example-app
 spec:
-  replicas: 1
+  replicas: 2 # You can adjust the number of replicas
   selector:
     matchLabels:
-      app: echo-server
+      app: argocd-example-app
   template:
     metadata:
       labels:
-        app: echo-server
+        app: argocd-example-app
     spec:
       containers:
-      - name: echo-server
-        image: jmalloc/echo-server
+      - name: argocd-example-app
+        image: jannisreply/argocd-example-app:v1
         ports:
-        - containerPort: 8080
+        - containerPort: 3000 # Assuming your app runs on port 3000
