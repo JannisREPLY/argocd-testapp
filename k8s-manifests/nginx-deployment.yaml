@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpd-deployment
+  name: whoami-deployment
   labels:
-    app: httpd
+    app: whoami
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: httpd
+      app: whoami
   template:
     metadata:
       labels:
-        app: httpd
+        app: whoami
     spec:
       containers:
-      - name: httpd
-        image: httpd:latest
+      - name: whoami
+        image: containous/whoami
         ports:
         - containerPort: 80
